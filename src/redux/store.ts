@@ -1,0 +1,10 @@
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { insertCell } from "./action-creators";
+import rootReducer from "./reducers";
+export const store = createStore(rootReducer, {}, applyMiddleware(thunk));
+store.dispatch(insertCell("1", "code", "let x = 3nfghfg"));
+store.dispatch(insertCell("2", "text", "bla bla bla lbla"));
+store.dispatch(insertCell("3", "text", "bla blaasdasdsad bla lbla"));
+store.dispatch(insertCell("4", "text", "bla blaaaaaaaaaaaaa bla lbla"));
+store.dispatch(insertCell("58", "code", "bla baaaaaaaaaaaala bla lbla"));
