@@ -7,7 +7,7 @@ interface CellProps extends CellType {}
 
 const Cell: React.FC<CellProps> = (CellData) => {
   return (
-    <div className="">
+    <div className="cell">
       <ActionBar id={CellData.id} />
       {CellData.type === "code" ? (
         <Window {...CellData} />

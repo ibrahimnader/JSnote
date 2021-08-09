@@ -25,7 +25,6 @@ interface UPDATE_Cell {
 interface INSERT_Cell {
   type: ActionTypes.INSERT_Cell;
   payload: {
-    id: string;
     type: CellTypes;
     content: string;
   };

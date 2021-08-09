@@ -40,14 +40,7 @@ const CellReducer = produce((state = initialState, action: Action) => {
         content: action.payload.content,
       };
       state.data[newCell.id] = newCell;
-      const index = state.order.findIndex(
-        (id: string) => id === action.payload.id
-      );
-      if (index < 0) {
-        state.order.push(newCell.id);
-      } else {
-        state.order.splice(index, 0, newCell.id);
-      }
+      state.order.push(newCell.id);
       return state;
 
     case ActionTypes.MOVE_Cell:

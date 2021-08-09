@@ -24,15 +24,10 @@ export const moveCell = (id: string, direction: "up" | "down"): Action => {
   };
 };
 
-export const insertCell = (
-  id: string,
-  type: CellTypes,
-  content: string
-): Action => {
+export const insertCell = (type: CellTypes, content: string): Action => {
   return {
     type: ActionTypes.INSERT_Cell,
     payload: {
-      id,
       type,
       content,
     },

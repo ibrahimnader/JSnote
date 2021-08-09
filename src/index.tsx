@@ -1,6 +1,7 @@
-import "bulmaswatch/superhero/bulmaswatch.min.css";
+import "bulmaswatch/journal/bulmaswatch.min.css";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { AddCell } from "./components/AddCell";
 import { CellsList } from "./components/CellsList";
 import { store } from "./redux";
 
@@ -9,6 +10,7 @@ const App = () => {
     <Provider store={store}>
       <div>
         <CellsList />
+        <AddCell />
       </div>
     </Provider>
   );
