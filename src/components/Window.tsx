@@ -1,5 +1,5 @@
 import "bulmaswatch/superhero/bulmaswatch.min.css";
-
+import { RootState } from "../redux";
 import { useEffect, useState } from "react";
 import "./window.css";
 import CodeEditor from "../components/CodeEditor";
@@ -8,25 +8,16 @@ import bundle from "../bundler";
 import { Resizable } from "./Resizable";
 import { useDispatch } from "react-redux";
 import { updateCell } from "../redux/action-creators";
+import { useTypedSelector } from "../hooks/typedSelector";
 interface WindowProps {
   id: string;
   type: "code" | "text";
   content: string;
 }
 const Window: React.FC<WindowProps> = ({ id, content, type }) => {
-  const [code, setCode] = useState("");
-  const [error, setError] = useState("");
-  useEffect(() => {
-    const timer = setTimeout(async () => {
-      const result = await bundle(content);
-      setCode(result.code);
-      setError(result.error);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [content]);
   const dispatch = useDispatch();
+  const bundleData = useTypedSelector((state) => state.bundleState.data[id]);
+  const bundle = bundleData ? bundleData : { code: "", error: "" };
   return (
     <Resizable direction="v">
       <div className="windowWrapper">
@@ -38,7 +29,7 @@ const Window: React.FC<WindowProps> = ({ id, content, type }) => {
             }}
           />
         </Resizable>
-        <Preview code={code} error={error} />
+        <Preview code={bundle.code || ""} error={bundle.error} />
       </div>
     </Resizable>
   );

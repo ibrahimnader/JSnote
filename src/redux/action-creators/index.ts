@@ -33,3 +33,15 @@ export const insertCell = (type: CellTypes, content: string): Action => {
     },
   };
 };
+export const bundleCreated = (
+  id: string,
+  bundle: { code: string; error: string }
+): Action => {
+  return {
+    type: ActionTypes.BUNDLE_CREATED,
+    payload: {
+      id,
+      bundle: bundle,
+    },
+  };
+};

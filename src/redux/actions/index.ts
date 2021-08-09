@@ -29,4 +29,19 @@ interface INSERT_Cell {
     content: string;
   };
 }
-export type Action = INSERT_Cell | UPDATE_Cell | MOVE_Cell | DELETE_Cell;
+interface BUNDLE_CREATED {
+  type: ActionTypes.BUNDLE_CREATED;
+  payload: {
+    id: string;
+    bundle: {
+      code: string;
+      error: string;
+    };
+  };
+}
+export type Action =
+  | INSERT_Cell
+  | UPDATE_Cell
+  | MOVE_Cell
+  | DELETE_Cell
+  | BUNDLE_CREATED;

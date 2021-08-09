@@ -4,9 +4,8 @@ import Cell from "./Cell";
 interface CellsListProps {}
 
 export const CellsList: React.FC<CellsListProps> = ({}) => {
-  const list = useTypedSelector((state) => state.CellState.data);
-  const order = useTypedSelector((state) => state.CellState.order);
-  console.log(list);
+  const list = useTypedSelector((state) => state.cellState.data);
+  const order = useTypedSelector((state) => state.cellState.order);
   return (
     <div className="">
       {order.map((id: string) => (
